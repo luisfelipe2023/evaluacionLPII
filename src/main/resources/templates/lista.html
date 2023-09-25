@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="card-title mb-4" style="background-color: gray;"><center>Registrar Empleado</center></h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Apellidos</th>
+                    <th>Nombres</th>
+                    <th>Edad</th>
+                    <th>Sexo</th>
+                    <th>Salario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="empleado : ${empleados}">
+				    <td th:text="${empleado.idEmpleado}"></td>
+				    <td th:text="${empleado.apellidos}"></td>
+				    <td th:text="${empleado.nombres}"></td>
+				    <td th:text="${empleado.edad}"></td>
+				    <td th:text="${empleado.sexo}"></td>
+				    <td th:text="${empleado.salario}"></td>
+				    <td>
+						<a th:href="@{/editar/}+${empleado.idEmpleado}" class="btn btn-danger">Editar</a>
+						<a th:href="@{/eliminar/}+${empleado.idEmpleado}" class="btn btn-warning">Eliminar</a>
+					</td>
+				</tr>
+                
+            </tbody>
+        </table>
+        <a th:href="@{/nuevo}" class="btn btn-primary">Agregar</a>
+    </div>
+</body>
+</html>
+	
